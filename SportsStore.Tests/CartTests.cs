@@ -87,8 +87,9 @@ namespace SportsStore.Tests {
             target.AddItem(p1, 3);
             decimal result = target.ComputeTotalValue();
 
+            // ( 100 + 50 + 100 + 100 + 100 ) * 1.13
             // Assert
-            Assert.Equal(450M, result);
+            Assert.Equal(508.50M, result);
         }
 
         [Fact]
