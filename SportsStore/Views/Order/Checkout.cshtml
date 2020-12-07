@@ -1,4 +1,4 @@
-﻿@model Order
+﻿@model OrderListViewModel
 
 <h2>Check out now</h2>
 <p>Please enter your details, and we'll ship your goods right away!</p>
@@ -8,35 +8,42 @@
 <form asp-action="Checkout" method="post">
     <h3>Ship to</h3>
     <div class="form-group">
-        <label>Name:</label><input asp-for="Name" class="form-control" />
+        <label>Name:</label><input asp-for="@Model.Orders.Name" class="form-control" />
     </div>
     <h3>Address</h3>
     <div class="form-group">
-        <label>Line 1:</label><input asp-for="Line1" class="form-control" />
+        <label>Line 1:</label><input asp-for="@Model.Orders.Line1" class="form-control" />
     </div>
     <div class="form-group">
-        <label>Line 2:</label><input asp-for="Line2" class="form-control" />
+        <label>Line 2:</label><input asp-for="@Model.Orders.Line2" class="form-control" />
     </div>
     <div class="form-group">
-        <label>Line 3:</label><input asp-for="Line3" class="form-control" />
+        <label>Line 3:</label><input asp-for="@Model.Orders.Line3" class="form-control" />
     </div>
     <div class="form-group">
-        <label>City:</label><input asp-for="City" class="form-control" />
+        <label>City:</label><input asp-for="@Model.Orders.City" class="form-control" />
     </div>
     <div class="form-group">
-        <label>State:</label><input asp-for="State" class="form-control" />
+        <label>State:</label><input asp-for="@Model.Orders.State" class="form-control" />
     </div>
     <div class="form-group">
-        <label>Zip:</label><input asp-for="Zip" class="form-control" />
+        <label>Zip:</label><input asp-for="@Model.Orders.Zip" class="form-control" />
     </div>
     <div class="form-group">
-        <label>Country:</label><input asp-for="Country" class="form-control" />
+        <label>Country:</label><input asp-for="@Model.Orders.Country" class="form-control" />
     </div>
     <h3>Options</h3>
     <div class="checkbox">
         <label>
-            <input asp-for="GiftWrap" /> Gift wrap these items
+            <input asp-for="@Model.Orders.GiftWrap" /> Gift wrap these items
         </label>
+    </div>
+    <h3>Summary</h3>
+    <div class="form-group">
+        <label>Total Number of Products :</label> @Model.TotalProduct
+    </div>
+    <div class="form-group">
+        <label>Total Price :</label> $ @Model.TotalPrice
     </div>
     <div class="text-center">
         <input class="btn btn-primary" type="submit" value="Complete Order" />
