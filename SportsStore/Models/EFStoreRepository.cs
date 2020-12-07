@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace SportsStore.Models {
     public class EFStoreRepository : IStoreRepository {
@@ -9,6 +10,9 @@ namespace SportsStore.Models {
         }
 
         public IQueryable<Product> Products => context.Products;
+
+        public IQueryable<CartLine> CartLines => context.CartLines;
+            //.Include(p=>p.Product);
 
         public void CreateProduct(Product p) {
             context.Add(p);

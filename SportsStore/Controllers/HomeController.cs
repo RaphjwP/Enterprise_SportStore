@@ -1,7 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
 using SportsStore.Models;
 using System.Linq;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.EntityFrameworkCore;
 using SportsStore.Models.ViewModels;
+using SportsStore.Pages.Admin;
 
 namespace SportsStore.Controllers {
     public class HomeController : Controller {
@@ -29,5 +33,13 @@ namespace SportsStore.Controllers {
                 },
                 CurrentCategory = category
             });
+
+        [Route("/Bestsellers")]
+        public ViewResult Bestsellers()
+        {
+            IEnumerable<CartLine> CartLines = repository.CartLines.Include(p => p.Product).OrderByDescending(p => p.Quantity).Take(10);
+
+            return View("Bestsellers", CartLines);
+        }
     }
 }

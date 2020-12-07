@@ -1,0 +1,40 @@
+﻿@model IEnumerable<CartLine>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SportsStore</title>
+    <link href="/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />    
+</head>
+<body>
+<div class="bg-dark text-white p-2">
+    <span class="navbar-brand ml-2">Bestsellers in SPORTS STORE</span>
+</div>
+<div class="m-1 p-1">
+    <table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Quantity</th>
+        <th scope="col">Name</th>
+        <th scope="col">Category</th>
+        <th scope="col">Price</th>
+        <th scope="col">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var cartLine in Model)
+    {
+        <tr>
+            <td>@cartLine.Quantity</td>
+            <td>@cartLine.Product.Name</td>
+            <td>@cartLine.Product.Category</td>
+            <td>@cartLine.Product.Price</td>
+            <td>@cartLine.Product.Description</td>
+        </tr>
+    }
+    </tbody>
+    </table>
+</div>
+</body>
+</html>
